@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>IVMs</title>
+</head>
+<body style="padding:20px">
+{% if cursor %}
+    <table border="2px">
+        <thead>
+            <tr>
+                <th>Num_serie</th>
+                <th>Fabricante</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in cursor %}
+                <tr>
+                    <td>{{ record[0] }}</td>
+                    <td>{{ record[1] }}</td>
+                    <td>
+                        <form action = "evento_reposicao", method=post>
+                            <p><input type="hidden" name="num_serie" value="{{ record[0] }}"/></p>
+                            <p><input type="hidden" name="fabricante" value="{{ record[1] }}"/></p>
+                            <p><input type=submit value="Listar Eventos de Reposicao"></p>
+                        </form>
+                    </td>
+                    <!--<td><a href="evento_reposicao?num_serie={{ record[0] }}&fabricante={{ record[1] }}">Listar Eventos de Reposicao</a></td>-->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p> Erro: não foi possível obter dados da base de dados!</p>
+{% endif %}
+</body>
+</html>

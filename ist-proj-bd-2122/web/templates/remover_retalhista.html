@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Remover Retalhista</title>
+</head>
+<body>
+    <h3>Remover Retalhista com tin: {{ params.get("tin") }}</h3>
+    <form action="remover_retalhista_update" method="post">
+    <p><input type="hidden" name="tin" value="{{ params.get('tin') }}"/></p>
+    <p><input type="submit" value="Submit"/></p>
+    </form>
+</body>
+</html>

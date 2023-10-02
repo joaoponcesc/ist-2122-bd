@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Adicionar Sub-Categoria</title>
+</head>
+<body>
+    <h3>Adicionar Sub-Categoria {{ params.get("super_cat") }}</h3>
+    <form action="adicionar_sub_update" method="post">
+    <p><input type="hidden" name="super_cat" value="{{ params.get('super_cat') }}"/></p>
+    <p>Sub-Categoria: <input type="text" name="sub_cat"/></p>
+    <p><input type="submit" value="Submit"/></p>
+    </form>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Gestao de Retalhistas</title>
+</head>
+<body style="padding:20px">
+{% if cursor %}
+    <table border="2px">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Tin</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in cursor %}
+                <tr>
+                    <td>{{ record[1] }}</td>
+                    <td>{{ record[0] }}</td>
+                    <td><a href="remover_retalhista?tin={{ record[0] }}">Remover</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3>Adicionar Retalhista</h3>
+    <form action = "adicionar_retalhista", method = post>
+        <p>Nome:<input type=text size=20 name="nome_novo"></p>
+        <p>Tin:<input type=text size=20 name="tin_novo"></p>
+        <p><input type=submit value="Submit"></p>
+    </form>
+{% else %}
+    <p> Erro: não foi possível obter dados da base de dados!</p>
+{% endif %}
+</body>
+</html>

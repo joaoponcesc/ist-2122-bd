@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Gestao de Categorias</title>
+</head>
+<body style="padding:20px">
+{% if cursor %}
+    <table border="2px">
+        <thead>
+            <tr>
+                <th>Nome</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in cursor %}
+                <tr>
+                    <td>{{ record[0] }}</td>
+                    <td><a href="remover?nome_cat={{ record[0] }}">Remover</a></td>
+                    <td><a href="adicionar_sub?super_cat={{ record[0] }}">Adicionar Sub-Categoria</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3>Adicionar Categoria</h3>
+    <form action = "adicionar_categoria", method = post>
+        Tipo de Categoria:
+        <select name = "tipo_categoria">
+            <option value="Super" selected>Super Categoria</option>
+            <option value="Simples" selected>Categoria Simples</option>
+        </select><br>
+        Nome Categoria:<input type=text size=20 name="nome_cat">
+        <input type=submit value="submit">
+    </form>
+{% else %}
+    <p> Erro: não foi possível obter dados da base de dados!</p>
+{% endif %}
+</body>
+</html>
